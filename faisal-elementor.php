@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Faisal Elementor Extend
- * Description: A plugin are extended the 
+ * Description: A plugin are extended the Elementor custom functions.
  * Plugin URI:  https://github.com/faisal46/wp-elementor-extend-plugin
  * Author: Md. Faisal Amir Mostafa
  * Author URI: https://www.faisal.rajtechbd.com/
