@@ -118,9 +118,9 @@ final class Faisal_Elementor_Extension {
 
 	}
 
-/**
- * Include widgets files and register them
- */
+    /**
+    * Include widgets files and register them
+    */
 	public function init_widgets() {
 
 		// Include Widget files
