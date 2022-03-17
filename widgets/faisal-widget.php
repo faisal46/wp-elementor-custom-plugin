@@ -37,6 +37,16 @@ class Elementor_Faisal_Widget extends \Elementor\Widget_Base{
 			]
 		);
 
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'position_section',
+			[
+				'label' => esc_html__( 'Position', 'elementorcustomaddon' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
 		$this->add_control(
 			'heading_align',
 			[
@@ -50,7 +60,6 @@ class Elementor_Faisal_Widget extends \Elementor\Widget_Base{
 				],
 			]
 		);
-
 		$this->end_controls_section();
 	}
 
