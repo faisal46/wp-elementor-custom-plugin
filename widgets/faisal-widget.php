@@ -6,7 +6,7 @@ class Elementor_Faisal_Widget extends \Elementor\Widget_Base{
 	}
 
 	public function get_title() {
-		return esc_html__( 'Faisal Heading', 'wpfee' );
+		return esc_html__( 'Custom Heading', 'elementorcustomaddon' );
 	}
 
 	public function get_icon() {
@@ -16,14 +16,14 @@ class Elementor_Faisal_Widget extends \Elementor\Widget_Base{
 	public function get_custom_help_url() {}
 
 	public function get_categories() {
-		return array( 'basic' );
+		return array( 'custom_basic_category' );
 	}
 
 	protected function register_controls() {
 		$this->start_controls_section(
 			'content_section',
 			[
-				'label' => esc_html__( 'Content', 'wpfee' ),
+				'label' => esc_html__( 'Content', 'elementorcustomaddon' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -31,22 +31,22 @@ class Elementor_Faisal_Widget extends \Elementor\Widget_Base{
 		$this->add_control(
 			'heading',
 			[
-				'label' => esc_html__( 'Heading', 'wpfee' ),
+				'label' => esc_html__( 'Heading', 'elementorcustomaddon' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'placeholder' => esc_html__( 'Enter your heading', 'wpfee' ),
+				'placeholder' => esc_html__( 'Enter your heading', 'elementorcustomaddon' ),
 			]
 		);
 
 		$this->add_control(
 			'heading_align',
 			[
-				'label' => esc_html__( 'Alignment', 'wpfee' ),
+				'label' => esc_html__( 'Alignment', 'elementorcustomaddon' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'left',
 				'options' => [
-					'left'  => esc_html__( 'Left', 'wpfee' ),
-					'right' => esc_html__( 'Right', 'wpfee' ),
-					'center' => esc_html__( 'Center', 'wpfee' ),
+					'left'  => esc_html__( 'Left', 'elementorcustomaddon' ),
+					'right' => esc_html__( 'Right', 'elementorcustomaddon' ),
+					'center' => esc_html__( 'Center', 'elementorcustomaddon' ),
 				],
 			]
 		);

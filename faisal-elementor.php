@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Faisal Elementor Extension
+ * Plugin Name: Elementor Custom Addon
  * Description: A plugin are extended the Elementor custom widgets functions.
  * Plugin URI:  https://github.com/faisal46/wp-elementor-extend-plugin
  * Author: Md. Faisal Amir Mostafa
@@ -8,7 +8,7 @@
  * Version: 1.0.0
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: wpfee
+ * Text Domain: elementorcustomaddon
  * Domain Path: /langusges/
  */
 
@@ -46,7 +46,7 @@ final class Faisal_Elementor_Extension {
 
 
 	public function init() {
-		load_plugin_textdomain( 'wpfee' );
+		load_plugin_textdomain( 'elementorcustomaddon' );
 
 		// Check if Elementor installed and activated
 		if ( ! did_action( 'elementor/loaded' ) ) {
@@ -68,7 +68,9 @@ final class Faisal_Elementor_Extension {
 
 		// Add Plugin actions
 		add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
-		// add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
+
+		// Custom category register
+		add_action( 'elementor/elements/categories_registered', [ $this, 'register_custom_category' ] );
 	}
 
 	public function admin_notice_missing_main_plugin() {
@@ -77,9 +79,9 @@ final class Faisal_Elementor_Extension {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'wpfee' ),
-			'<strong>' . esc_html__( 'Faisal Elementor Extension', 'wpfee' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'wpfee' ) . '</strong>'
+			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'elementorcustomaddon' ),
+			'<strong>' . esc_html__( 'Elementor Custom Addon', 'elementorcustomaddon' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'elementorcustomaddon' ) . '</strong>'
 		);
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
@@ -92,9 +94,9 @@ final class Faisal_Elementor_Extension {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'wpfee' ),
-			'<strong>' . esc_html__( 'Faisal Elementor Extension', 'wpfee' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'wpfee' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'elementorcustomaddon' ),
+			'<strong>' . esc_html__( 'Elementor Custom Addon', 'elementorcustomaddon' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'elementorcustomaddon' ) . '</strong>',
 			 self::MINIMUM_ELEMENTOR_VERSION
 		);
 
@@ -108,15 +110,25 @@ final class Faisal_Elementor_Extension {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'wpfee' ),
-			'<strong>' . esc_html__( 'Faisal Elementor Extension', 'wpfee' ) . '</strong>',
-			'<strong>' . esc_html__( 'PHP', 'wpfee' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'elementorcustomaddon' ),
+			'<strong>' . esc_html__( 'Elementor Custom Addon', 'elementorcustomaddon' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'elementorcustomaddon' ) . '</strong>',
 			 self::MINIMUM_PHP_VERSION
 		);
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
 
 	}
+
+    /**
+    * Custom categories function
+    */
+    public function register_custom_category( $manager ){
+    	$manager->add_category('custom_basic_category', [
+           'title' => __( 'Custom Basic Category', 'elementorcustomaddon' ),
+           'icon'  => 'fa fa-image',
+    	] );
+    }
 
     /**
     * Include widgets files and register them
