@@ -1,6 +1,6 @@
 <?php
 
-class Elementor_Faisal_Widget extends \Elementor\Widget_Base{
+class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 	public function get_name() {
 		return 'FaisalWidget';
 	}

@@ -136,10 +136,10 @@ final class Faisal_Elementor_Extension {
 	public function init_widgets() {
 
 		// Include Widget files
-		require_once( __DIR__ . '/widgets/faisal-widget.php' );
+		require_once( __DIR__ . '/widgets/custom-widget.php' );
 
 		// Register widget
-		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Faisal_Widget() );
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Custom_Widget() );
 
 	}
 
