@@ -131,5 +131,13 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
         echo '<p class="description">'.esc_html__( $description ).'</p>';
 	}
 
-	protected function content_template() {}
+	protected function content_template() {
+		?>
+		<#
+           console.log(settings);
+		#>
+          <h1 class="heading">{{{settings.heading}}}</h1>
+          <p class="description">{{{settings.description}}}</p>
+		<?php
+	}
 }
