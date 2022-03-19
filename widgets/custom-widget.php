@@ -127,17 +127,29 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		$heading       = $settings['heading'];
 		$heading_align = $settings['heading_align'];
 		$description = $settings['description'];
-        echo '<h1 class="heading">'.esc_html__( $heading ).'</h1>';
-        echo '<p class="description">'.esc_html__( $description ).'</p>';
+		$this->add_inline_editing_attributes('heading', 'none');
+		$this->add_render_attribute('heading', [
+			'class' => 'heading'
+		]);
+		$this->add_inline_editing_attributes('description', 'none');
+		$this->add_render_attribute('description', [
+			'class' => 'description'
+		]);
+        echo "<h1 ".$this->get_render_attribute_string('heading').">".esc_html__( $heading )."</h1>";
+        echo "<p ".$this->get_render_attribute_string('description').">".wp_kses_post( $description )."</p>";
 	}
 
 	protected function content_template() {
 		?>
 		<#
-           console.log(settings);
+           view.addInlineEditingAttributes('heading', 'none');
+           view.addRenderAttribute('heading',{'class':'heading'}); 
+		   
+		   view.addInlineEditingAttributes('description', 'none');
+           view.addRenderAttribute('description',{'class':'description'});
 		#>
-          <h1 class="heading">{{{settings.heading}}}</h1>
-          <p class="description">{{{settings.description}}}</p>
+          <h1 {{{ view.getRenderAttributeString('heading') }}}>{{{settings.heading}}}</h1>
+          <p {{{ view.getRenderAttributeString('description') }}}>{{{settings.description}}}</p>
 		<?php
 	}
 }
