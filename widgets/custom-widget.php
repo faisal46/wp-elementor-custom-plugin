@@ -2,15 +2,15 @@
 
 class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 	public function get_name() {
-		return 'FaisalWidget';
+		return 'CustomWidget';
 	}
 
 	public function get_title() {
-		return esc_html__( 'Custom Heading', 'elementorcustomaddon' );
+		return esc_html__( 'Custom Widget', 'elementorcustomaddon' );
 	}
 
 	public function get_icon() {
-		return 'eicon-t-letter';
+		return 'eicon-document-file';
 	}
 
 	public function get_custom_help_url() {}
