@@ -244,13 +244,16 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		foreach ( $countries as $country ) {
 			echo '<div>' . $country . '</div>';
 		}
+		// Choose One Radio buttons styled as groups of buttons with icons.
+		if ( $settings['choose_one'] ){ 
         ?>
-		<!-- Choose One Radio buttons styled as groups of buttons with icons. -->
+		
 		<div style="text-align: <?php echo esc_attr( $settings['choose_one'] ); ?>;">
 		WordPress Elementor Addon plugin for custom widgets extend the functions. WordPress Elementor Addon for custom widgets extend the functions WordPress Elementor Addon plugin for custom widgets extend our the functions WordPress Elementor Addon plugin for custom widgets extend the functions are the best.vbnv
 		</div>
 
 		<?php
+		}
 	
 	}
 
