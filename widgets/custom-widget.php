@@ -6,7 +6,7 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 	}
 
 	public function get_title() {
-		return esc_html__( 'Custom Widget', 'elementorcustomaddon' );
+		return esc_html__( 'Custom Widgets', 'elementorcustomaddon' );
 	}
 
 	public function get_icon() {
