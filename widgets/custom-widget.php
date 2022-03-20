@@ -179,6 +179,46 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 
 		$this->end_controls_section();
 		// Select 2 section end
+		
+		// Choose section start
+		$this->start_controls_section(
+			'choose_section',
+			[
+				'label' => esc_html__( 'Choose', 'elementorcustomaddon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+		$this->add_control(
+			'choose_one',
+			[
+				'label'       => esc_html__( 'Choose One', 'elementorcustomaddon' ),
+				'type'        => \Elementor\Controls_Manager::CHOOSE,
+				'label_block' => true,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementorcustomaddon' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementorcustomaddon' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementorcustomaddon' ),
+						'icon' => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'Justify', 'elementorcustomaddon' ),
+						'icon' => 'eicon-text-align-justify',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+			]
+		);
+
+		$this->end_controls_section();
+		// Choose section end
 	}
 
 	protected function render() {
@@ -204,6 +244,13 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		foreach ( $countries as $country ) {
 			echo '<div>' . $country . '</div>';
 		}
+        ?>
+		<!-- Choose One Radio buttons styled as groups of buttons with icons. -->
+		<div style="text-align: <?php echo esc_attr( $settings['choose_one'] ); ?>;">
+		WordPress Elementor Addon plugin for custom widgets extend the functions. WordPress Elementor Addon for custom widgets extend the functions WordPress Elementor Addon plugin for custom widgets extend our the functions WordPress Elementor Addon plugin for custom widgets extend the functions are the best.vbnv
+		</div>
+
+		<?php
 	
 	}
 
@@ -235,6 +282,13 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 			<li>{{{ country }}}</li>
 		<# } ) #>
 		</ul>
+
+		<!-- Choose One Radio buttons styled as groups of buttons with icons. -->
+		<div style="text-align: {{{ settings.choose_one }}}">
+		  WordPress Elementor Addon plugin for custom widgets extend the functions. WordPress Elementor Addon for custom widgets extend the functions WordPress Elementor Addon plugin for custom widgets extend our the functions WordPress Elementor Addon plugin for custom widgets extend the functions are the best.vbnv
+		</div>
+
+
 		 
 
 		<?php
