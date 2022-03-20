@@ -150,6 +150,35 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 
 		$this->end_controls_section();
 		// Image section end
+		
+		// Select 2 section start
+		$this->start_controls_section(
+			'select2_section',
+			[
+				'label' => esc_html__( 'Select2', 'elementorcustomaddon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+		$this->add_control(
+			'select2',
+			[
+				'label'       => esc_html__( 'Select2', 'elementorcustomaddon' ),
+				'type'        => \Elementor\Controls_Manager::SELECT2,
+				'label_block' => true,
+				'multiple' => true,
+				'options'     => [
+					'bangladesh' => esc_html__( 'Bangladesh', 'elementorcustomaddon' ),
+					'indea'      => esc_html__( 'Indea', 'elementorcustomaddon' ),
+					'america'    => esc_html__( 'America', 'elementorcustomaddon' ),
+					'africa'     => esc_html__( 'Africa', 'elementorcustomaddon' ),
+					'canada'     => esc_html__( 'Canada', 'elementorcustomaddon' ),
+					'rasia'      => esc_html__( 'Rasia', 'elementorcustomaddon' ),
+				]
+			]
+		);
+
+		$this->end_controls_section();
+		// Select 2 section end
 	}
 
 	protected function render() {
@@ -169,6 +198,13 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
         echo "<p ".$this->get_render_attribute_string('description').">".wp_kses_post( $description )."</p>";
 		// echo wp_get_attachment_image( $settings['image']['id'], 'large' );
 		echo \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'custom_image_size', 'custom_image' );
+		
+		// Select 2 data get & show
+		$countries = $settings['select2'];
+		foreach ( $countries as $country ) {
+			echo '<div>' . $country . '</div>';
+		}
+	
 	}
 
 	protected function content_template() {
@@ -192,6 +228,15 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
           <h1 {{{ view.getRenderAttributeString('heading') }}}>{{{ settings.heading }}}</h1>
           <p {{{ view.getRenderAttributeString('description') }}}>{{{ settings.description }}}</p>
 		  <img src="{{{ customImageUrl }}}" alt="" />
+
+		  <!-- Select2 value output. -->
+		<ul>
+		<# _.each( settings.select2,function( country ) { #>
+			<li>{{{ country }}}</li>
+		<# } ) #>
+		</ul>
+		 
+
 		<?php
 	}
 }
