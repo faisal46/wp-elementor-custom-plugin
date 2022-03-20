@@ -120,6 +120,36 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 			]
 		);
 		$this->end_controls_section();
+
+		// Image section start
+		$this->start_controls_section(
+			'image_section',
+			[
+				'label' => esc_html__( 'Image', 'elementorcustomaddon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+		$this->add_control(
+			'custom_image',
+			[
+				'label'      => esc_html__( 'Image', 'elementorcustomaddon' ),
+				'type'       => \Elementor\Controls_Manager::MEDIA,
+				'default'  => [
+					'url'  => \Elementor\Utils::get_placeholder_image_src()
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Image_Size::get_type(),
+			[
+				'name' => 'custom_image_size', 
+				'default' => 'large',
+			]
+		);
+
+		$this->end_controls_section();
+		// Image section end
 	}
 
 	protected function render() {
@@ -137,6 +167,8 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		]);
         echo "<h1 ".$this->get_render_attribute_string('heading').">".esc_html__( $heading )."</h1>";
         echo "<p ".$this->get_render_attribute_string('description').">".wp_kses_post( $description )."</p>";
+		// echo wp_get_attachment_image( $settings['image']['id'], 'large' );
+		echo \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'custom_image_size', 'custom_image' );
 	}
 
 	protected function content_template() {
@@ -147,9 +179,19 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		   
 		   view.addInlineEditingAttributes('description', 'none');
            view.addRenderAttribute('description',{'class':'description'});
+
+		  // Custom image output with image size. 
+		   var customImage = {
+			   id:settings.custom_image.id,
+			   url:settings.custom_image.url,
+			   size:settings.custom_image_size_size,
+			   dimension:settings.custom_image_size_custom_dimension,
+		   }
+		   var customImageUrl = elementor.imagesManager.getImageUrl( customImage );
 		#>
-          <h1 {{{ view.getRenderAttributeString('heading') }}}>{{{settings.heading}}}</h1>
-          <p {{{ view.getRenderAttributeString('description') }}}>{{{settings.description}}}</p>
+          <h1 {{{ view.getRenderAttributeString('heading') }}}>{{{ settings.heading }}}</h1>
+          <p {{{ view.getRenderAttributeString('description') }}}>{{{ settings.description }}}</p>
+		  <img src="{{{ customImageUrl }}}" alt="" />
 		<?php
 	}
 }
