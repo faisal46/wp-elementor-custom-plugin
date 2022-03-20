@@ -2,7 +2,7 @@
 
 class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 	public function get_name() {
-		return 'CustomWidget';
+		return 'CustomWidgets';
 	}
 
 	public function get_title() {
