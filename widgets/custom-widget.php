@@ -254,8 +254,6 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 
 		$this->end_controls_section();
 		// Choose section end
-
-		
 		
 		// Icon section start
 		$this->start_controls_section(
@@ -292,6 +290,33 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		
 		$this->end_controls_section();
 		// Icon section end
+		
+		// Font section start
+		$this->start_controls_section(
+			'font_section',
+			[
+				'label' => esc_html__( 'Font Control', 'elementorcustomaddon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'font_family',
+			[
+				'label'       => esc_html__( 'Font Family', 'elementorcustomaddon' ),
+				'type' => \Elementor\Controls_Manager::FONT,
+				'label_block' => true,
+				'default' => "'Open Sans', 'sans-serif'",
+				'selectors'  => [
+					'{{WRAPPER}} h1.heading' => 'font-family: {{VALUE}}',
+					'{{WRAPPER}} p.description' => 'font-family: {{VALUE}}',
+				],
+			
+			]	
+		);
+		
+		$this->end_controls_section();
+		// Font section end
 	}
 
 	protected function render() {
