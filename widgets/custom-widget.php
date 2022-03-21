@@ -216,6 +216,20 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 				'toggle' => true,
 			]
 		);
+		
+		// Image dimension
+		$this->add_control(
+			'image_dimension',
+			[
+				'label'       => esc_html__( 'Dimension', 'elementorcustomaddon' ),
+				'type'        => \Elementor\Controls_Manager::IMAGE_DIMENSIONS,
+				'Description'       => esc_html__( 'Input Width & Height', 'elementorcustomaddon' ),
+				'default' => [
+					'width' => 300,
+					'height' => 100,
+				],
+			]	
+		);
 
 		$this->end_controls_section();
 		// Choose section end
@@ -244,16 +258,13 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		foreach ( $countries as $country ) {
 			echo '<div>' . $country . '</div>';
 		}
+		echo '<br>';
 		// Choose One Radio buttons styled as groups of buttons with icons.
-		if ( $settings['choose_one'] ){ 
-        ?>
+		echo esc_attr( $settings['choose_one'] );
+		echo '<br>';
 		
-		<div style="text-align: <?php echo esc_attr( $settings['choose_one'] ); ?>;">
-		WordPress Elementor Addon plugin for custom widgets extend the functions. WordPress Elementor Addon for custom widgets extend the functions WordPress Elementor Addon plugin for custom widgets extend our the functions WordPress Elementor Addon plugin for custom widgets extend the functions are the best.vbnv
-		</div>
-
-		<?php
-		}
+		// Image dimension.
+		print_r($settings['image_dimension']);
 	
 	}
 
@@ -287,12 +298,11 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		</ul>
 
 		<!-- Choose One Radio buttons styled as groups of buttons with icons. -->
-		<div style="text-align: {{{ settings.choose_one }}}">
-		  WordPress Elementor Addon plugin for custom widgets extend the functions. WordPress Elementor Addon for custom widgets extend the functions WordPress Elementor Addon plugin for custom widgets extend our the functions WordPress Elementor Addon plugin for custom widgets extend the functions are the best.vbnv
-		</div>
-
-
-		 
+		<div>{{{ settings.choose_one }}}</div>
+		
+		<!-- Image dimension -->
+		<div>Width: {{{ settings.image_dimension.width }}}</div>
+		<div>Height: {{{ settings.image_dimension.height }}}</div>
 
 		<?php
 	}
