@@ -317,6 +317,39 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		
 		$this->end_controls_section();
 		// Font section end
+		
+		// Popover Control section start.
+		$this->start_controls_section(
+			'popover_control',
+			[
+				'label' => esc_html__( 'Popover Control', 'elementorcustomaddon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'popover_section',
+			[
+				'label'       => esc_html__( 'Popover Control', 'elementorcustomaddon' ),
+				'type' => \Elementor\Controls_Manager::POPOVER_TOGGLE,
+			]	
+		);
+
+		$this->start_popover();
+
+		$this->add_control(
+			'font_family1',
+			[
+				'label'       => esc_html__( 'Font Family', 'elementorcustomaddon' ),
+				'type' => \Elementor\Controls_Manager::FONT,
+				'label_block' => true,
+			]		
+		);
+
+		$this->end_popover();
+		
+		$this->end_controls_section();
+		// Popover Control section end.
 	}
 
 	protected function render() {
