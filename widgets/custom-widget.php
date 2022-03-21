@@ -216,7 +216,28 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 				'toggle' => true,
 			]
 		);
-		
+
+		$this->end_controls_section();
+		// Choose section end
+
+		// Image gallery section start
+		$this->start_controls_section(
+			'gallery_section',
+			[
+				'label' => esc_html__( 'Image Gallery', 'elementorcustomaddon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		// Image gallery
+		$this->add_control(
+			'image',
+			[
+				'label'       => esc_html__( 'Image Gallery', 'elementorcustomaddon' ),
+				'type'        => \Elementor\Controls_Manager::GALLERY,
+			]	
+		);
+
 		// Image dimension
 		$this->add_control(
 			'image_dimension',
@@ -230,18 +251,45 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 				],
 			]	
 		);
-		
-		// Image gallery
-		$this->add_control(
-			'image',
-			[
-				'label'       => esc_html__( 'Image Gallery', 'elementorcustomaddon' ),
-				'type'        => \Elementor\Controls_Manager::GALLERY,
-			]	
-		);
 
 		$this->end_controls_section();
-		// Choose section end
+		// Image gallery section end
+		
+		// Icon section start
+		$this->start_controls_section(
+			'icon_section',
+			[
+				'label' => esc_html__( 'Icon Control', 'elementorcustomaddon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'icon',
+			[
+				'label'       => esc_html__( 'Icon', 'elementorcustomaddon' ),
+				'type' => \Elementor\Controls_Manager::ICON,
+				'label_block' => true,
+				'include' => [
+					'fa fa-facebook',
+					'fa fa-flickr',
+					'fa fa-google-plus',
+					'fa fa-instagram',
+					'fa fa-linkedin',
+					'fa fa-pinterest',
+					'fa fa-reddit',
+					'fa fa-twitch',
+					'fa fa-twitter',
+					'fa fa-vimeo',
+					'fa fa-youtube',
+				],
+				'default' => 'fa fa-facebook',
+			
+			]	
+		);
+		
+		$this->end_controls_section();
+		// Icon section end
 	}
 
 	protected function render() {
@@ -281,6 +329,13 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		foreach( $image_gallery as $gallery ){
 			echo wp_get_attachment_image( $gallery['id'], 'thumbnail' );
 		}
+		echo '</div>';
+		
+		// Icon output.
+		echo '<div>';
+		$icons = $settings['icon'];
+		echo $icons;
+		echo '<i class="fa fa-facebook"></i>';
 		echo '</div>';
 	
 	}
@@ -335,6 +390,12 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		#>
 		<img src="{{{ galleryImageUrl }}}" alt="" />
 		<# } ) #>
+		</div>
+
+		<!-- Icon output. -->
+		<div>
+		{{{ settings.icon }}}
+			<i class="{{{ settings.icon }}}"></i>
 		</div>
 
 		<?php
