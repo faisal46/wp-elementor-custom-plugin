@@ -230,6 +230,15 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 				],
 			]	
 		);
+		
+		// Image gallery
+		$this->add_control(
+			'image',
+			[
+				'label'       => esc_html__( 'Image Gallery', 'elementorcustomaddon' ),
+				'type'        => \Elementor\Controls_Manager::GALLERY,
+			]	
+		);
 
 		$this->end_controls_section();
 		// Choose section end
@@ -265,6 +274,14 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		
 		// Image dimension.
 		print_r($settings['image_dimension']);
+		
+		// Image gallery output.
+		echo '<div>';
+		$image_gallery = $settings['image'];
+		foreach( $image_gallery as $gallery ){
+			echo wp_get_attachment_image( $gallery['id'], 'thumbnail' );
+		}
+		echo '</div>';
 	
 	}
 
@@ -303,6 +320,22 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		<!-- Image dimension -->
 		<div>Width: {{{ settings.image_dimension.width }}}</div>
 		<div>Height: {{{ settings.image_dimension.height }}}</div>
+
+		<!-- Image gallery -->
+		<div>
+		<#
+		   _.each( settings.image,function( image ) {
+			var image = {
+			   id:image.id,
+			   url:image.url,
+			   size:image.thumbnail,
+		   }
+		   var galleryImageUrl = elementor.imagesManager.getImageUrl( image );
+
+		#>
+		<img src="{{{ galleryImageUrl }}}" alt="" />
+		<# } ) #>
+		</div>
 
 		<?php
 	}
