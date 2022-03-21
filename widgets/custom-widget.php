@@ -312,19 +312,6 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		// echo wp_get_attachment_image( $settings['image']['id'], 'large' );
 		echo \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'custom_image_size', 'custom_image' );
 		
-		// Select 2 data get & show
-		$countries = $settings['select2'];
-		foreach ( $countries as $country ) {
-			echo '<div>' . $country . '</div>';
-		}
-		echo '<br>';
-		// Choose One Radio buttons styled as groups of buttons with icons.
-		echo esc_attr( $settings['choose_one'] );
-		echo '<br>';
-		
-		// Image dimension.
-		print_r($settings['image_dimension']);
-		
 		// Image gallery output.
 		echo '<div>';
 		$image_gallery = $settings['image'];
@@ -332,6 +319,20 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 			echo wp_get_attachment_image( $gallery['id'], 'thumbnail' );
 		}
 		echo '</div>';
+
+		// Image dimension.
+		print_r($settings['image_dimension']);
+
+		// Select 2 data get & show
+		$countries = $settings['select2'];
+		foreach ( $countries as $country ) {
+			echo '<div>' . $country . '</div>';
+		}
+		echo '<br>';
+
+		// Choose One Radio buttons styled as groups of buttons with icons.
+		echo esc_attr( $settings['choose_one'] );
+		echo '<br>';
 		
 		// Icon output.
 		echo '<div>';
@@ -364,19 +365,6 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
           <p {{{ view.getRenderAttributeString('description') }}}>{{{ settings.description }}}</p>
 		  <img src="{{{ customImageUrl }}}" alt="" />
 
-		  <!-- Select2 value output. -->
-		<ul>
-		<# _.each( settings.select2,function( country ) { #>
-			<li>{{{ country }}}</li>
-		<# } ) #>
-		</ul>
-
-		<!-- Choose One Radio buttons styled as groups of buttons with icons. -->
-		<div>{{{ settings.choose_one }}}</div>
-		
-		<!-- Image dimension -->
-		<div>Width: {{{ settings.image_dimension.width }}}</div>
-		<div>Height: {{{ settings.image_dimension.height }}}</div>
 
 		<!-- Image gallery -->
 		<div>
@@ -393,6 +381,20 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		<img src="{{{ galleryImageUrl }}}" alt="" />
 		<# } ) #>
 		</div>
+
+		 <!-- Image dimension -->
+		 <div>Width: {{{ settings.image_dimension.width }}}</div>
+		<div>Height: {{{ settings.image_dimension.height }}}</div>
+
+		  <!-- Select2 value output. -->
+		<ul>
+		<# _.each( settings.select2,function( country ) { #>
+			<li>{{{ country }}}</li>
+		<# } ) #>
+		</ul>
+
+		<!-- Choose One Radio buttons styled as groups of buttons with icons. -->
+		<div>{{{ settings.choose_one }}}</div>
 
 		<!-- Icon output. -->
 		<div>
