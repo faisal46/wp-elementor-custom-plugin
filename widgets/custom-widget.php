@@ -93,7 +93,7 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		$this->start_controls_section(
 			'color_section',
 			[
-				'label' => esc_html__( 'Color', 'elementorcustomaddon' ),
+				'label' => esc_html__( 'Color Control', 'elementorcustomaddon' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -125,7 +125,7 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		$this->start_controls_section(
 			'image_section',
 			[
-				'label' => esc_html__( 'Image', 'elementorcustomaddon' ),
+				'label' => esc_html__( 'Image Control', 'elementorcustomaddon' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -150,75 +150,6 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 
 		$this->end_controls_section();
 		// Image section end
-		
-		// Select 2 section start
-		$this->start_controls_section(
-			'select2_section',
-			[
-				'label' => esc_html__( 'Select2', 'elementorcustomaddon' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-		$this->add_control(
-			'select2',
-			[
-				'label'       => esc_html__( 'Select2', 'elementorcustomaddon' ),
-				'type'        => \Elementor\Controls_Manager::SELECT2,
-				'label_block' => true,
-				'multiple' => true,
-				'options'     => [
-					'bangladesh' => esc_html__( 'Bangladesh', 'elementorcustomaddon' ),
-					'indea'      => esc_html__( 'Indea', 'elementorcustomaddon' ),
-					'america'    => esc_html__( 'America', 'elementorcustomaddon' ),
-					'africa'     => esc_html__( 'Africa', 'elementorcustomaddon' ),
-					'canada'     => esc_html__( 'Canada', 'elementorcustomaddon' ),
-					'rasia'      => esc_html__( 'Rasia', 'elementorcustomaddon' ),
-				]
-			]
-		);
-
-		$this->end_controls_section();
-		// Select 2 section end
-		
-		// Choose section start
-		$this->start_controls_section(
-			'choose_section',
-			[
-				'label' => esc_html__( 'Choose', 'elementorcustomaddon' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-		$this->add_control(
-			'choose_one',
-			[
-				'label'       => esc_html__( 'Choose One', 'elementorcustomaddon' ),
-				'type'        => \Elementor\Controls_Manager::CHOOSE,
-				'label_block' => true,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'elementorcustomaddon' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'elementorcustomaddon' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'elementorcustomaddon' ),
-						'icon' => 'eicon-text-align-right',
-					],
-					'justify' => [
-						'title' => esc_html__( 'Justify', 'elementorcustomaddon' ),
-						'icon' => 'eicon-text-align-justify',
-					],
-				],
-				'default' => 'center',
-				'toggle' => true,
-			]
-		);
-
-		$this->end_controls_section();
-		// Choose section end
 
 		// Image gallery section start
 		$this->start_controls_section(
@@ -254,6 +185,77 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 
 		$this->end_controls_section();
 		// Image gallery section end
+		
+		// Select 2 section start
+		$this->start_controls_section(
+			'select2_section',
+			[
+				'label' => esc_html__( 'Select2 Control', 'elementorcustomaddon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+		$this->add_control(
+			'select2',
+			[
+				'label'       => esc_html__( 'Select2', 'elementorcustomaddon' ),
+				'type'        => \Elementor\Controls_Manager::SELECT2,
+				'label_block' => true,
+				'multiple' => true,
+				'options'     => [
+					'bangladesh' => esc_html__( 'Bangladesh', 'elementorcustomaddon' ),
+					'indea'      => esc_html__( 'Indea', 'elementorcustomaddon' ),
+					'america'    => esc_html__( 'America', 'elementorcustomaddon' ),
+					'africa'     => esc_html__( 'Africa', 'elementorcustomaddon' ),
+					'canada'     => esc_html__( 'Canada', 'elementorcustomaddon' ),
+					'rasia'      => esc_html__( 'Rasia', 'elementorcustomaddon' ),
+				]
+			]
+		);
+
+		$this->end_controls_section();
+		// Select 2 section end
+		
+		// Choose section start
+		$this->start_controls_section(
+			'choose_section',
+			[
+				'label' => esc_html__( 'Choose Control', 'elementorcustomaddon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+		$this->add_control(
+			'choose_one',
+			[
+				'label'       => esc_html__( 'Choose One', 'elementorcustomaddon' ),
+				'type'        => \Elementor\Controls_Manager::CHOOSE,
+				'label_block' => true,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementorcustomaddon' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementorcustomaddon' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementorcustomaddon' ),
+						'icon' => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'Justify', 'elementorcustomaddon' ),
+						'icon' => 'eicon-text-align-justify',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+			]
+		);
+
+		$this->end_controls_section();
+		// Choose section end
+
+		
 		
 		// Icon section start
 		$this->start_controls_section(
