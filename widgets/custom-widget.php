@@ -395,6 +395,28 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		
 		$this->end_controls_section();
 		// Slider section end
+		
+		// Typography Group Control section start
+		$this->start_controls_section(
+			'typography_section',
+			[
+				'label' => esc_html__( 'Typography Group Control', 'elementorcustomaddon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'label' => esc_html__( 'Heading Typography', 'elementorcustomaddon' ),
+				'name' => 'heading_typography',
+				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} h1.heading',
+			]	
+		);
+		
+		$this->end_controls_section();
+		// Typography Group Control section end
 	}
 
 	protected function render() {
