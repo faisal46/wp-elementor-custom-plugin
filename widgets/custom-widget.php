@@ -350,6 +350,51 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		
 		$this->end_controls_section();
 		// Popover Control section end.
+
+		// Slider section start
+		$this->start_controls_section(
+			'slider_section',
+			[
+				'label' => esc_html__( 'Slider Range Control', 'elementorcustomaddon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'slider_range',
+			[
+				'label'       => esc_html__( 'Heading Font Size', 'elementorcustomaddon' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'rem' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 120,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 200,
+						'step' => 10,
+					],
+					'rem' => [
+						'min' => 0,
+						'max' => 200,
+						'step' => 10,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 50,
+				],
+				'selectors' => [
+					'{{WRAPPER}} h1.heading' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]	
+		);
+		
+		$this->end_controls_section();
+		// Slider section end
 	}
 
 	protected function render() {
