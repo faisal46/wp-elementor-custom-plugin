@@ -137,9 +137,11 @@ final class Faisal_Elementor_Extension {
 
 		// Include Widget files
 		require_once( __DIR__ . '/widgets/custom-widget.php' );
+		require_once( __DIR__ . '/widgets/faq-widget.php' );
 
 		// Register widget
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Custom_Widget() );
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Faq_Widget() );
 
 	}
 

@@ -410,7 +410,7 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 			[
 				'label' => esc_html__( 'Heading Typography', 'elementorcustomaddon' ),
 				'name' => 'heading_typography',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				// 'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} h1.heading',
 			]	
 		);
