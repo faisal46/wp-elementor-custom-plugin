@@ -1,25 +1,84 @@
 <?php
 
 class Elementor_Custom_Widget extends \Elementor\Widget_Base{
+	/**
+	 * Get widget name.
+	 *
+	 * Retrieve widget name.
+	 *
+	 * @return string Widget name.
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 */
 	public function get_name() {
 		return 'CustomWidgets';
 	}
 
+	/**
+	 * Get widget title.
+	 *
+	 * Retrieve widget title.
+	 *
+	 * @return string Widget title.
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 */
 	public function get_title() {
 		return esc_html__( 'Custom Widgets', 'elementorcustomaddon' );
 	}
 
+	/**
+	 * Get widget icon.
+	 *
+	 * Retrieve widget icon.
+	 *
+	 * @return string Widget icon.
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 */
 	public function get_icon() {
 		return 'eicon-document-file';
 	}
 
-	public function get_custom_help_url() {}
-
+	/**
+	 * Get widget categories.
+	 *
+	 * Retrieve the list of categories the widget belongs to.
+	 *
+	 * @return array Widget categories.
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 */
 	public function get_categories() {
 		return array( 'custom_basic_category' );
 	}
 
+	/**
+	 * Register widget controls.
+	 *
+	 * Adds different input fields to allow the user to change and customize the widget settings.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
 	protected function register_controls() {
+		$this->register_content_controls();
+		// $this->register_style_controls();
+	}
+
+	/**
+	 * Register widget content ontrols.
+	 *
+	 * Adds different input fields to allow the user to change and customize the widget settings.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
+	protected function register_content_controls() {
 		$this->start_controls_section(
 			'content_section',
 			[
@@ -440,6 +499,14 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 		// Text Shadow Group Control section end
 	}
 
+	/**
+	 * Render widget output on the frontend.
+	 *
+	 * Written in PHP and used to generate the final HTML.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
 	protected function render() {
 		$settings      = $this->get_settings_for_display();
 		$heading       = $settings['heading'];
@@ -489,6 +556,14 @@ class Elementor_Custom_Widget extends \Elementor\Widget_Base{
 	
 	}
 
+	/**
+	 * Render widget output on the frontend.
+	 *
+	 * Written in JS and used to generate the final HTML.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
 	protected function content_template() {
 		?>
 		<#

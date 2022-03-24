@@ -21,15 +21,58 @@ if( ! defined( 'ABSPATH' ) ){
 /**
  * Plugin final class
  */
-final class Faisal_Elementor_Extension {
-
+final class Elementor_Custom_Extension {
+	/**
+	 * Plugin Version
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string The plugin version.
+	 */
     const VERSION = '1.0.0';
+
+	/**
+	 * Minimum Elementor Version
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string Minimum Elementor version required to run the plugin.
+	 */
     const MINIMUM_ELEMENTOR_VERSION = '3.5.0';
+
+	/**
+	 * Minimum PHP Version
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string Minimum PHP version required to run the plugin.
+	 */
     const MINIMUM_PHP_VERSION = '7.0';
 
-
+	/**
+	 * Instance
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access private
+	 * @static
+	 *
+	 * @var Elementor_Test_Extension The single instance of the class.
+	 */
 	private static $_instance = null;
 
+	/**
+	 * Instance
+	 *
+	 * Ensures only one instance of the class is loaded or can be loaded.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 * @static
+	 *
+	 * @return Elementor_Test_Extension An instance of the class.
+	 */
 	public static function instance() {
 
 		if ( is_null( self::$_instance ) ) {
@@ -39,12 +82,48 @@ final class Faisal_Elementor_Extension {
 
 	}
 
+	/**
+	 * Constructor
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 */
 	public function __construct() {
+		add_action( 'init', [ $this, 'load_textdomain' ] );
 		add_action( 'plugin_loaded', [ $this, 'init' ] );
 	}
 
+	/**
+	 * Load Textdomain
+	 *
+	 * Load plugin localization files.
+	 *
+	 * Fired by `init` action hook.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 */
+	public function load_textdomain() {
 
+		load_plugin_textdomain( 'boilerplate' );
 
+	}
+
+	/**
+	 * Initialize the plugin
+	 *
+	 * Load the plugin only after Elementor (and other plugins) are loaded.
+	 * Checks for basic plugin requirements, if one check fail don't continue,
+	 * if all check have passed load the files required to run the plugin.
+	 *
+	 * Fired by `plugins_loaded` action hook.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 */
 	public function init() {
 		load_plugin_textdomain( 'elementorcustomaddon' );
 
@@ -73,6 +152,15 @@ final class Faisal_Elementor_Extension {
 		add_action( 'elementor/elements/categories_registered', [ $this, 'register_custom_category' ] );
 	}
 
+	/**
+	 * Admin notice
+	 *
+	 * Warning when the site doesn't have Elementor installed or activated.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 */
 	public function admin_notice_missing_main_plugin() {
 
 		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
@@ -88,6 +176,15 @@ final class Faisal_Elementor_Extension {
 
 	}
 
+	/**
+	 * Admin notice
+	 *
+	 * Warning when the site doesn't have a minimum required Elementor version.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 */
 	public function admin_notice_minimum_elementor_version() {
 
 		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
@@ -104,6 +201,15 @@ final class Faisal_Elementor_Extension {
 
 	}
 
+	/**
+	 * Admin notice
+	 *
+	 * Warning when the site doesn't have a minimum required PHP version.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 */
 	public function admin_notice_minimum_php_version() {
 
 		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
@@ -131,8 +237,14 @@ final class Faisal_Elementor_Extension {
     }
 
     /**
-    * Include widgets files and register them
-    */
+	 * Init Widgets
+	 *
+	 * Include widgets files and register them
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 */
 	public function init_widgets() {
 
 		// Include Widget files
@@ -147,4 +259,4 @@ final class Faisal_Elementor_Extension {
 
 }
 
-Faisal_Elementor_Extension::instance();
+Elementor_Custom_Extension::instance();
